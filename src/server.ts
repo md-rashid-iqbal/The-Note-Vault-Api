@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import authRoutes from './routes/authRoutes.js';
-import noteRoutes from './routes/noteRoutes.js';
+import authRoutes from './routes/authRoutes';
+import noteRoutes from './routes/noteRoutes';
 
 dotenv.config();
 
@@ -13,16 +13,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Basic Route for testing
+// Welcome Route
 app.get('/', (req, res) => {
   res.json({ message: "Secure Note Vault API is running smoothly!" });
 });
 
-// Routing Setup
+// Routes Binding
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
 
-// MongoDB connection mapping
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/noteVault';
 mongoose.connect(mongoURI)
   .then(() => {
