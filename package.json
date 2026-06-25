@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Secure Note Vault API",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
